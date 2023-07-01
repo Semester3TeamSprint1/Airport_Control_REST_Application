@@ -40,7 +40,7 @@ public class BrowserService {
         return browserList;
     }
 
-    public Browser undo(){
+    public Browser undoBrowser(){
         if(browserStack.isEmpty()){
             System.out.println("no data present");
             return null;
@@ -50,7 +50,7 @@ public class BrowserService {
         return browserStack.peek();
     }
 
-    public Browser redo() {
+    public Browser redoBrowser() {
         if (redoStack.isEmpty()){
             System.out.println("no data present");
         }

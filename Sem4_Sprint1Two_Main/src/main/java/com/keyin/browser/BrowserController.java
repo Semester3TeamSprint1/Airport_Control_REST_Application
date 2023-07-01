@@ -24,13 +24,13 @@ public class BrowserController {
         return browserService.getBrowserData();
     }
 
-    @GetMapping("/undo")
-    public Browser undo(){
-        return browserService.undo();
+    @GetMapping("/undoBrowser")
+    public Browser undoBrowser(){
+        return browserService.undoBrowser();
     }
 
-    @GetMapping("/redo")
-    public Browser redo(){
-        return browserService.redo();
+    @GetMapping("/redoBrowser")
+    public Browser redoBrowser(){
+        return browserService.redoBrowser();
     }
 }

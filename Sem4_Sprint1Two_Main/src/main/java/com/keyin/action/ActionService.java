@@ -37,7 +37,7 @@ public class ActionService {
         System.out.println("the action has been added to the stack " + actionStack.peek().getObject() + " " + actionStack.peek().getOperation() + " object id: " + actionStack.peek().getParameters().get("id"));
     }
 
-    public void undo() {
+    public void undoAction() {
 
         if(actionStack.size() > 0) {
 
@@ -118,7 +118,7 @@ public class ActionService {
 
     // doesn't like when u reach the end
     // and cant get update to work with redo **
-    public void redo() {
+    public void redoAction() {
         if(redoActionStack.size() > 0) {
 
             switch (redoActionStack.peek().getObject()){

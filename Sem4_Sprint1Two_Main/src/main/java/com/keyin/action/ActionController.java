@@ -15,14 +15,14 @@ public class ActionController {
     @Autowired
     ActionService actionService;
 
-    @DeleteMapping("/undo")
-    public void undo(){
-        actionService.undo();
+    @DeleteMapping("/undoAction")
+    public void undoAction(){
+        actionService.undoAction();
     }
 
-    @DeleteMapping("/redo")
-    public void redo(){
-        actionService.redo();
+    @DeleteMapping("/redoAction")
+    public void redoAction(){
+        actionService.redoAction();
     }
 
 }
