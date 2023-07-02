@@ -1,13 +1,13 @@
-package com.keyin.action;
+package com.keyin.activity;
 
 import java.util.Map;
 
-public class Action {
+public class Activity {
     private String object;
     private String operation;
     private Map<String, Object> parameters;
 
-    public Action(String object, String operation, Map<String, Object> parameters) {
+    public Activity(String object, String operation, Map<String, Object> parameters) {
         this.object = object;
         this.operation = operation;
         this.parameters = parameters;

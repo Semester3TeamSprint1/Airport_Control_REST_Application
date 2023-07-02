@@ -3,9 +3,7 @@ package com.keyin;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-// ** to run the api, run this application **
-// bootstrapping class for spring boot
-
+// run HTTP program first, then run this program.
 @SpringBootApplication
 public class RestApp {
 

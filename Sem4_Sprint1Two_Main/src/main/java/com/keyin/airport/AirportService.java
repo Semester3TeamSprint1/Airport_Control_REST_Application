@@ -28,10 +28,6 @@ public class AirportService {
         airport1.setCityId(1);
         airportList.add(airport1);
 
-        //I may be able to for relationships this way
-        //AircraftService abc = new AircraftService();
-        //abc.getAircraftById(1);
-
         Airport airport2 = new Airport();
         airport2.setId(2);
         airport2.setName("Edmonton Airlines");
