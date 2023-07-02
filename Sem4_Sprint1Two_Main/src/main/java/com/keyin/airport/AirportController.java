@@ -1,6 +1,6 @@
 package com.keyin.airport;
 
-import com.keyin.action.ActionService;
+import com.keyin.activity.ActivityService;
 import com.keyin.browser.BrowserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +17,7 @@ public class AirportController {
     @Autowired
     private BrowserService browserService; //-------------------------------------
     @Autowired
-    private ActionService actionService; //-------------------------------------
+    private ActivityService activityService; //-------------------------------------
 
     @GetMapping("/airport")
     public List<Airport> getAllAirports() {
@@ -40,22 +40,22 @@ public class AirportController {
 
     @PostMapping("/airport/addAirport")
     public void addAirport(@RequestBody Airport airport){
-        actionService.addAction("airport", "create", Map.of("id", airport.getId(), "name",  airport.getName(),"cityId", airport.getCityId()));
+        activityService.addActivity("airport", "create", Map.of("id", airport.getId(), "name",  airport.getName(),"cityId", airport.getCityId()));
         browserService.addToBrowser("addAirport()", "/airport/addAirport", LocalDateTime.now());
         airportService.addAirport(airport);
     }
 
     @DeleteMapping("/airport/deleteAirport/{id}")
     public List<Airport> deleteAirportById(@PathVariable int id) {
-        Airport airportForAction = new Airport();
+        Airport airportForActivity = new Airport();
         List<Airport> airportlist = airportService.getAllAirports();
         for (Airport airport : airportlist){
             if (airport.getId() == id) {
-                airportForAction = airport;
+                airportForActivity = airport;
             }
         }
-        if (airportForAction != null) {
-            actionService.addAction("airport", "delete", Map.of("id", airportForAction.getId(), "name",  airportForAction.getName(), "cityId", airportForAction.getCityId()));
+        if (airportForActivity != null) {
+            activityService.addActivity("airport", "delete", Map.of("id", airportForActivity.getId(), "name",  airportForActivity.getName(), "cityId", airportForActivity.getCityId()));
         }
 
         String url = "/airport/deleteAirport/" + String.valueOf(id);
@@ -65,15 +65,15 @@ public class AirportController {
 
     @PutMapping("/airport/updateAirport/{id}")
     public List<Airport> updateAirport(@PathVariable int id, @RequestBody Airport airport){
-        Airport airportForAction = new Airport();
+        Airport airportForActivity = new Airport();
         List<Airport> airportList = airportService.getAllAirports();
         for (Airport airportToFind : airportList){
             if (airportToFind.getId() == id) {
-                airportForAction = airportToFind;
+                airportForActivity = airportToFind;
             }
         }
-        if (airportForAction != null) {
-            actionService.addAction("airport", "update", Map.of("id", airportForAction.getId(), "name",  airportForAction.getName(), "cityId", airportForAction.getCityId()));
+        if (airportForActivity != null) {
+            activityService.addActivity("airport", "update", Map.of("id", airportForActivity.getId(), "name",  airportForActivity.getName(), "cityId", airportForActivity.getCityId()));
         }
 
         String url = "/airport/updateAirport/" + String.valueOf(id);

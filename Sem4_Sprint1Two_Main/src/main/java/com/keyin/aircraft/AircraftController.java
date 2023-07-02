@@ -1,7 +1,6 @@
 package com.keyin.aircraft;
 
-import com.keyin.action.ActionService;
-import com.keyin.airport.Airport;
+import com.keyin.activity.ActivityService;
 import com.keyin.browser.BrowserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +17,7 @@ public class AircraftController {
     @Autowired
     private BrowserService browserService;
     @Autowired
-    private ActionService actionService;
+    private ActivityService activityService;
 
     @GetMapping("/aircraft")
     public List<Aircraft> getAllAircrafts() {
@@ -41,22 +40,22 @@ public class AircraftController {
 
     @PostMapping("/aircraft/addAircraft")
     public void addAircraft(@RequestBody Aircraft aircraft){
-        actionService.addAction("aircraft", "create", Map.of("id", aircraft.getId(), "type",  aircraft.getType(), "airlineName",aircraft.getAirlineName(), "noOfPassengers", aircraft.getNoOfPassengers(), "allowedAirportList", aircraft.getAllowedAirportList()));
+        activityService.addActivity("aircraft", "create", Map.of("id", aircraft.getId(), "type",  aircraft.getType(), "airlineName",aircraft.getAirlineName(), "noOfPassengers", aircraft.getNoOfPassengers(), "allowedAirportList", aircraft.getAllowedAirportList()));
         browserService.addToBrowser("addAircraft()", "/aircraft/addAircraft", LocalDateTime.now());
         aircraftService.addAircraft(aircraft);
     }
 
     @DeleteMapping("/aircraft/deleteAircraft/{id}")
     public List<Aircraft> deleteAirportById(@PathVariable int id) {
-        Aircraft aircraftForAction = new Aircraft();
+        Aircraft aircraftForActivity = new Aircraft();
         List<Aircraft> aircraftlist = aircraftService.getAllAircrafts();
         for (Aircraft aircraft : aircraftlist){
             if (aircraft.getId() == id) {
-                aircraftForAction = aircraft;
+                aircraftForActivity = aircraft;
             }
         }
-        if (aircraftForAction != null) {
-            actionService.addAction("aircraft", "delete", Map.of("id", aircraftForAction.getId(), "type", aircraftForAction.getType(),"airlineName", aircraftForAction.getAirlineName(), "noOfPassengers", aircraftForAction.getNoOfPassengers(), "allowedAirportList", aircraftForAction.getAllowedAirportList()));
+        if (aircraftForActivity != null) {
+            activityService.addActivity("aircraft", "delete", Map.of("id", aircraftForActivity.getId(), "type", aircraftForActivity.getType(),"airlineName", aircraftForActivity.getAirlineName(), "noOfPassengers", aircraftForActivity.getNoOfPassengers(), "allowedAirportList", aircraftForActivity.getAllowedAirportList()));
         }
 
         String url = "/aircraft/deleteAircraft/" + String.valueOf(id);
@@ -66,15 +65,15 @@ public class AircraftController {
 
     @PutMapping("/aircraft/updateAircraft/{id}")
     public List<Aircraft> updateAircraft(@PathVariable int id, @RequestBody Aircraft aircraft){
-        Aircraft aircraftForAction = new Aircraft();
+        Aircraft aircraftForActivity = new Aircraft();
         List<Aircraft> aircraftlist = aircraftService.getAllAircrafts();
         for (Aircraft aircraftToFind : aircraftlist){
             if (aircraftToFind.getId() == id) {
-                aircraftForAction = aircraftToFind;
+                aircraftForActivity = aircraftToFind;
             }
         }
-        if (aircraftForAction != null) {
-            actionService.addAction("aircraft", "update",Map.of("id", aircraftForAction.getId(), "type", aircraftForAction.getType(),"airlineName", aircraftForAction.getAirlineName(), "noOfPassengers", aircraftForAction.getNoOfPassengers(), "allowedAirportList", aircraftForAction.getAllowedAirportList()));
+        if (aircraftForActivity != null) {
+            activityService.addActivity("aircraft", "update",Map.of("id", aircraftForActivity.getId(), "type", aircraftForActivity.getType(),"airlineName", aircraftForActivity.getAirlineName(), "noOfPassengers", aircraftForActivity.getNoOfPassengers(), "allowedAirportList", aircraftForActivity.getAllowedAirportList()));
         }
 
         String url = "/aircraft/updateAircraft/" + String.valueOf(id);

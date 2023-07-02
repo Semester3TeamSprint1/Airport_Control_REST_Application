@@ -28,7 +28,6 @@ public class BrowserService {
         }
     }
 
-    // what if stack is empty ??
     public List<Browser> getBrowserData() {
         List<Browser> browserList = new ArrayList<>();
         browserList.addAll(browserStack);
