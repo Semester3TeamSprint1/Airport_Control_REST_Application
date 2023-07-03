@@ -18,28 +18,29 @@ public class AirportService {
     // make a method to do the population instead of in the constructor
 
     public AirportService() {
-        populateList();
+       // populateList();
     }
 
     public void populateList(){
         Airport airport1 = new Airport();
-        airport1.setId(1);
+        //airport1.setId(1);
         airport1.setName("NL Airport");
         airport1.setCityId(1);
         airportList.add(airport1);
 
         Airport airport2 = new Airport();
-        airport2.setId(2);
+        //airport2.setId(2);
         airport2.setName("Edmonton Airlines");
         airport2.setCityId(2);
         airportList.add(airport2);
 
         Airport airport3 = new Airport();
-        airport3.setId(3);
+        //airport3.setId(3);
         airport3.setName("Calgary Airport");
         airport3.setCityId(3);
         airportList.add(airport3);
     }
+
 
     public List<Airport> getAllAirports() {
         return airportList;

@@ -7,18 +7,18 @@ import java.util.List;
 import java.util.Objects;
 
 public class Passenger {
-    private int id;
+    private Long id;
     private String firstname;
     private String lastName;
     private String phoneNumber;
     private List<Integer> aircraftIdsList = new ArrayList<>();
     private List<Integer> airportIdsList = new ArrayList<>();
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
