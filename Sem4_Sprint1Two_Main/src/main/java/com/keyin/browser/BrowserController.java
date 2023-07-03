@@ -1,18 +1,19 @@
 package com.keyin.browser;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @CrossOrigin
 public class BrowserController {
+    private final BrowserService browserService;
+
     @Autowired
-    private BrowserService browserService;
+    public BrowserController(BrowserService browserService) {
+        this.browserService = browserService;
+    }
 
     @GetMapping("/browser")
     public Browser getPeekBrowser() {
@@ -20,17 +21,17 @@ public class BrowserController {
     }
 
     @GetMapping("/allBrowserData")
-    public List<Browser> getAllBrowserData(){
+    public List<Browser> getAllBrowserData() {
         return browserService.getBrowserData();
     }
 
     @GetMapping("/undoBrowser")
-    public Browser undoBrowser(){
+    public Browser undoBrowser() {
         return browserService.undoBrowser();
     }
 
     @GetMapping("/redoBrowser")
-    public Browser redoBrowser(){
+    public Browser redoBrowser() {
         return browserService.redoBrowser();
     }
 }
