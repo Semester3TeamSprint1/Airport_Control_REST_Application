@@ -20,9 +20,9 @@ public class PassengerService {
     public void populate(){
         Passenger passenger1 = new Passenger();
         passenger1.setId(1);
-        passenger1.setFirstname("Kyle");
+        passenger1.setFirstname("John");
         passenger1.setLastName("Snow");
-        passenger1.setPhoneNumber("(709) 683-4444");
+        passenger1.setPhoneNumber("111-222-3333");
         passenger1.addToAircraftIdsList(1);
         passenger1.addToAirportIdsList(1);
         passenger1.addToAirportIdsList(2);
@@ -30,9 +30,9 @@ public class PassengerService {
 
         Passenger passenger2 = new Passenger();
         passenger2 .setId(2);
-        passenger2 .setFirstname("Ken");
-        passenger2 .setLastName("Chafe");
-        passenger2 .setPhoneNumber("(709) 683-4532");
+        passenger2 .setFirstname("Bob");
+        passenger2 .setLastName("Habit");
+        passenger2 .setPhoneNumber("444-000-8888");
         passenger2.addToAircraftIdsList(1);
         passenger2.addToAircraftIdsList(2);
         passenger2.addToAirportIdsList(2);
@@ -41,9 +41,9 @@ public class PassengerService {
 
         Passenger passenger3 = new Passenger();
         passenger3.setId(3);
-        passenger3.setFirstname("Tyler");
-        passenger3.setLastName("Power");
-        passenger3.setPhoneNumber("(709) 683-9911");
+        passenger3.setFirstname("Beth");
+        passenger3.setLastName("Sings");
+        passenger3.setPhoneNumber("333-777-0092");
         passengerList.add(passenger3);
     }
 
