@@ -236,7 +236,7 @@ public class AircraftService {
     private void populateList() {
         List<Airport> allAirports = airportService.getAllAirports();
 
-        Aircraft aircraft1 = new Aircraft(1, "Airbus A220", "", 100);
+        Aircraft aircraft1 = new Aircraft(1, "Airbus A220", "euroAir", 100);
         aircraft1.addAllowedAirport(allAirports.get(0));
         aircraft1.addAllowedAirport(allAirports.get(1));
         aircraftList.add(aircraft1);
