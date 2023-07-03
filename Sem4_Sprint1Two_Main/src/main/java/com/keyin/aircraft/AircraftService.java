@@ -11,9 +11,9 @@ import java.util.List;
 public class AircraftService {
 
     private List<Aircraft> aircraftList = new ArrayList<>();
-/*
+
     public AircraftService() {
-        populateList();
+        //populateList();
     }
 
     public void populateList() {
@@ -22,7 +22,7 @@ public class AircraftService {
         allAirports = airportService.getAllAirports();
 
         Aircraft aircraft1 = new Aircraft();
-        aircraft1.setId(1);
+        //aircraft1.setId(1);
         aircraft1.setType("Boeing 737");
         aircraft1.setAirlineName("Air Canada");
         aircraft1.setNoOfPassengers(100);
@@ -31,35 +31,33 @@ public class AircraftService {
         aircraftList.add(aircraft1);
 
         Aircraft aircraft2 = new Aircraft();
-        aircraft2.setId(2);
+        //aircraft2.setId(2);
         aircraft2.setType("Boeing 101");
         aircraft2.setAirlineName("West Jet");
         aircraft2.setNoOfPassengers(70);
         aircraftList.add(aircraft2);
 
         Aircraft aircraft3 = new Aircraft();
-        aircraft3.setId(3);
+        //aircraft3.setId(3);
         aircraft3.setType("Boeing 408");
         aircraft3.setAirlineName("Air Canada");
         aircraft3.setNoOfPassengers(70);
         aircraftList.add(aircraft3);
 
         Aircraft aircraft4 = new Aircraft();
-        aircraft4.setId(4);
+        //aircraft4.setId(4);
         aircraft4.setType("Boeing 709");
         aircraft4.setAirlineName("West Jet");
         aircraft4.setNoOfPassengers(25);
         aircraftList.add(aircraft4);
 
         Aircraft aircraft5 = new Aircraft();
-        aircraft5.setId(5);
+        //aircraft5.setId(5);
         aircraft5.setType("Boeing 402");
         aircraft5.setAirlineName("East Jet");
         aircraft5.setNoOfPassengers(90);
         aircraftList.add(aircraft5);
     }
-
- */
 
     public List<Aircraft> getAllAircrafts() {
         return aircraftList;
