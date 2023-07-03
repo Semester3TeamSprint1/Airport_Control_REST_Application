@@ -11,7 +11,7 @@ import java.util.List;
 public class AircraftService {
 
     private List<Aircraft> aircraftList = new ArrayList<>();
-
+/*
     public AircraftService() {
         populateList();
     }
@@ -58,6 +58,8 @@ public class AircraftService {
         aircraft5.setNoOfPassengers(90);
         aircraftList.add(aircraft5);
     }
+
+ */
 
     public List<Aircraft> getAllAircrafts() {
         return aircraftList;
