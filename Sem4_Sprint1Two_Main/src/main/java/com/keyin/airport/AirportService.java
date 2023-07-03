@@ -201,7 +201,7 @@ public class AirportService {
                 return airportList;
             }
         }
-        System.out.println("Sorry, this airport does not exist.");
+        System.out.println("Sorry, this airport cannot be found");
         return airportList;
     }
 
@@ -209,11 +209,11 @@ public class AirportService {
         for (Airport airport : airportList) {
             if (airport.getId() == id) {
                 airportList.remove(airport);
-                System.out.println("The airport has been deleted");
+                System.out.println("The selected airport has been deleted");
                 return airportList;
             }
         }
-        System.out.println("Sorry, the airport you are trying to delete does not exist.");
+        System.out.println("Sorry, this airport cannot be found");
         return airportList;
     }
 
