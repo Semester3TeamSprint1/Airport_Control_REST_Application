@@ -14,25 +14,25 @@ public class PassengerService {
     private List<Passenger> passengerList = new ArrayList<>();
 
     public PassengerService() {
-        populate();
+        //populate();
     }
 
     public void populate(){
         Passenger passenger1 = new Passenger();
-        passenger1.setId(1);
-        passenger1.setFirstname("Kyle");
+        //passenger1.setId(1);
+        passenger1.setFirstname("John");
         passenger1.setLastName("Snow");
-        passenger1.setPhoneNumber("(709) 683-4444");
+        passenger1.setPhoneNumber("111-222-3333");
         passenger1.addToAircraftIdsList(1);
         passenger1.addToAirportIdsList(1);
         passenger1.addToAirportIdsList(2);
         passengerList.add(passenger1);
 
         Passenger passenger2 = new Passenger();
-        passenger2 .setId(2);
-        passenger2 .setFirstname("Ken");
-        passenger2 .setLastName("Chafe");
-        passenger2 .setPhoneNumber("(709) 683-4532");
+        //passenger2 .setId(2);
+        passenger2 .setFirstname("Bob");
+        passenger2 .setLastName("Habit");
+        passenger2 .setPhoneNumber("444-000-8888");
         passenger2.addToAircraftIdsList(1);
         passenger2.addToAircraftIdsList(2);
         passenger2.addToAirportIdsList(2);
@@ -40,12 +40,13 @@ public class PassengerService {
         passengerList.add(passenger2 );
 
         Passenger passenger3 = new Passenger();
-        passenger3.setId(3);
-        passenger3.setFirstname("Tyler");
-        passenger3.setLastName("Power");
-        passenger3.setPhoneNumber("(709) 683-9911");
+        //passenger3.setId(3);
+        passenger3.setFirstname("Beth");
+        passenger3.setLastName("Sings");
+        passenger3.setPhoneNumber("333-777-0092");
         passengerList.add(passenger3);
     }
+
 
     public List<Passenger> getAllPassenger() {
         return passengerList;
@@ -139,7 +140,7 @@ public class PassengerService {
 
         for(Integer i : foundPassenger.getAircraftIdsList() ) {
             for(Aircraft aircraft : allAircraftList) {
-                if(i == aircraft.getId()) {
+                if(i.equals(aircraft.getId())) {
                     aircraftFlownOn.add(aircraft);
                 }
             }
@@ -165,7 +166,7 @@ public class PassengerService {
 
         for(Integer i : foundPassenger.getAirportIdsList() ) {
             for(Airport airport : allAirportsList) {
-                if(i == airport.getId()) {
+                if(i.equals(airport.getId())) {
                     airportVisited.add(airport);
                 }
             }

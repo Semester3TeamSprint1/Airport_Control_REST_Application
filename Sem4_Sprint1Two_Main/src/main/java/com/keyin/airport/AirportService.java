@@ -14,7 +14,7 @@ public class AirportService {
     private List<City> cityList = new ArrayList<>();
 
     public AirportService() {
-        populateList();
+       // populateList();
     }
 
     private void populateList() {
@@ -30,6 +30,7 @@ public class AirportService {
         airport.setCityId(cityId);
         return airport;
     }
+
 
     public List<Airport> getAllAirports() {
         return airportList;

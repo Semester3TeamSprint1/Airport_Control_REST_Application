@@ -10,13 +10,14 @@ public class CityService {
     private List<City> cityList = new ArrayList<>();
 
     public CityService() {
-        populateList();
+        //populateList();
     }
 
     private void populateList() {
         cityList.add(new City(1, "St Johns", "Newfoundland", 100_000));
         cityList.add(new City(2, "Edmonton", "Alberta", 100_000_000));
         cityList.add(new City(3, "Calgary", "Alberta", 200_000_000));
+
     }
 
     public List<City> getAllCities() {

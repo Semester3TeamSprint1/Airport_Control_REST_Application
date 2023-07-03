@@ -13,9 +13,12 @@ public class AircraftService {
     private final List<Aircraft> aircraftList = new ArrayList<>();
     private final AirportService airportService;
 
-    public AircraftService(AirportService airportService) {
-        this.airportService = airportService;
-        populateList();
+
+    private List<Aircraft> aircraftList = new ArrayList<>();
+
+    public AircraftService() {
+        //populateList();
+
     }
 
     private void populateList() {
@@ -36,8 +39,6 @@ public class AircraftService {
         aircraftList.add(aircraft4);
 
         Aircraft aircraft5 = new Aircraft(5, "Embraer E-Jet E2 family", "Brazil air", 90);
-        aircraftList.add(aircraft5);
-    }
 
     public List<Aircraft> getAllAircrafts() {
         return aircraftList;
