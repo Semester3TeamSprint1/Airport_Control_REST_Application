@@ -53,16 +53,22 @@ public class AirportService {
     public List<Airport> searchAirport(String toSearch) {
         List<Airport> foundList = new ArrayList<>();
         for (Airport airport : airportList) {
-            if (String.valueOf(airport.getId()).equals(toSearch) || airport.getName().equals(toSearch)) {
+            String idToString = String.valueOf(airport.getId());
+
+            if(idToString.equals(toSearch) || airport.getName().equals(toSearch) || airport.getCode().equals(toSearch)) {
                 foundList.add(airport);
             }
         }
         return foundList;
     }
 
-    public List<Airport> updateAirport(int id, Airport airportToChange) {
-        for (Airport airport : airportList) {
-            if (airport.getId() == id) {
+
+    public List<Airport> updateAirport(int id, Airport airportToChange){
+        boolean found = false;
+
+        for(Airport airport : airportList) {
+            if(airport.getId() == id){
+                airport.setCode(airportToChange.getCode());
                 airport.setName(airportToChange.getName());
                 airport.setCityId(airportToChange.getCityId());
                 return airportList;

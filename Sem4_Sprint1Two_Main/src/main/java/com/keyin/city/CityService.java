@@ -13,11 +13,24 @@ public class CityService {
         //populateList();
     }
 
-    private void populateList() {
-        cityList.add(new City(1, "St Johns", "Newfoundland", 100_000));
-        cityList.add(new City(2, "Edmonton", "Alberta", 100_000_000));
-        cityList.add(new City(3, "Calgary", "Alberta", 200_000_000));
+    public void populateList() {
+        City city1 = new City();
+        //city1.setId(1);
+        city1.setName("St Johns");
+        city1.setProvince("Newfoundland");
+        cityList.add(city1);
 
+        City city2 = new City();
+        //city2.setId(2);
+        city2.setName("Edmonton");
+        city2.setProvince("Alberta");
+        cityList.add(city2);
+
+        City city3 = new City();
+        //city3.setId(3);
+        city3.setName("Calgary");
+        city3.setProvince("Alberta");
+        cityList.add(city3);
     }
 
     public List<City> getAllCities() {
@@ -70,7 +83,6 @@ public class CityService {
             if (city.getId() == id) {
                 city.setName(cityToChange.getName());
                 city.setProvince(cityToChange.getProvince());
-                city.setPopulation(cityToChange.getPopulation());
                 found = true;
                 break;
             }

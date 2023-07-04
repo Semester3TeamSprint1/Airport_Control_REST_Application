@@ -4,7 +4,6 @@ public class City {
     private Long id;
     private String name;
     private String province;
-    private int population;
 
     public Long getId() {
         return id;
@@ -30,11 +29,4 @@ public class City {
         this.province = province;
     }
 
-    public int getPopulation() {
-        return population;
-    }
-
-    public void setPopulation(int population) {
-        this.population = population;
-    }
 }

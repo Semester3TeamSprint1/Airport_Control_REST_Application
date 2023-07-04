@@ -40,8 +40,8 @@ public class CityController {
     }
 
     @PostMapping("/city/addCity")
-    public void addCity(@RequestBody City city) {
-        activityService.addActivity("city", "create", Map.of("id", city.getId(), "name", city.getName(), "province", city.getProvince(), "population", city.getPopulation()));
+    public void addCity(@RequestBody City city){
+        activityService.addActivity("city", "create", Map.of("id", city.getId(), "name",  city.getName(), "province", city.getProvince()));
         browserService.addToBrowser("addCity()", "/city/addCity", LocalDateTime.now());
         cityService.addCity(city);
     }
@@ -50,7 +50,7 @@ public class CityController {
     public List<City> deleteCityById(@PathVariable int id) {
         City cityForActivity = cityService.getCityById(id);
         if (cityForActivity != null) {
-            activityService.addActivity("city", "delete", Map.of("id", cityForActivity.getId(), "name", cityForActivity.getName(), "province", cityForActivity.getProvince(), "population", cityForActivity.getPopulation()));
+            activityService.addActivity("city", "delete", Map.of("id", cityForActivity.getId(), "name",  cityForActivity.getName(), "province", cityForActivity.getProvince()));
         }
 
         String url = "/city/deleteCity/" + id;
@@ -62,7 +62,8 @@ public class CityController {
     public List<City> updateCity(@PathVariable int id, @RequestBody City city) {
         City cityForActivity = cityService.getCityById(id);
         if (cityForActivity != null) {
-            activityService.addActivity("city", "update", Map.of("id", cityForActivity.getId(), "name", cityForActivity.getName(), "province", cityForActivity.getProvince(), "population", cityForActivity.getPopulation()));
+            activityService.addActivity("city", "update", Map.of("id", cityForActivity.getId(), "name",  cityForActivity.getName(), "province", cityForActivity.getProvince()));
+
         }
 
         String url = "/city/updateCity/" + id;

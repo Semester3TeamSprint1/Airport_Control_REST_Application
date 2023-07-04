@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Passenger {
     private Long id;
-    private String firstname;
+    private String firstName;
     private String lastName;
     private String phoneNumber;
     private List<Integer> aircraftIdsList = new ArrayList<>();

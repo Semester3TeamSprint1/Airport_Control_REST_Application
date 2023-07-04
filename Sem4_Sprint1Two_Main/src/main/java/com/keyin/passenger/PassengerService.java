@@ -20,7 +20,7 @@ public class PassengerService {
     public void populate(){
         Passenger passenger1 = new Passenger();
         //passenger1.setId(1);
-        passenger1.setFirstname("John");
+        passenger1.setFirstName("John");
         passenger1.setLastName("Snow");
         passenger1.setPhoneNumber("111-222-3333");
         passenger1.addToAircraftIdsList(1);
@@ -30,7 +30,7 @@ public class PassengerService {
 
         Passenger passenger2 = new Passenger();
         //passenger2 .setId(2);
-        passenger2 .setFirstname("Bob");
+        passenger2 .setFirstName("Bob");
         passenger2 .setLastName("Habit");
         passenger2 .setPhoneNumber("444-000-8888");
         passenger2.addToAircraftIdsList(1);
@@ -41,7 +41,7 @@ public class PassengerService {
 
         Passenger passenger3 = new Passenger();
         //passenger3.setId(3);
-        passenger3.setFirstname("Beth");
+        passenger3.setFirstName("Beth");
         passenger3.setLastName("Sings");
         passenger3.setPhoneNumber("333-777-0092");
         passengerList.add(passenger3);
@@ -73,7 +73,7 @@ public class PassengerService {
         for (Passenger passenger : passengerList) {
             String idToString = String.valueOf(passenger.getId());
 
-            if(idToString.equals(toSearch) || passenger.getFirstname().equals(toSearch) || passenger.getLastName().equals(toSearch) || passenger.getPhoneNumber().equals(toSearch)) {
+            if(idToString.equals(toSearch) || passenger.getFirstName().equals(toSearch) || passenger.getLastName().equals(toSearch) || passenger.getPhoneNumber().equals(toSearch)) {
                 foundList.add(passenger);
 
             }
@@ -91,7 +91,7 @@ public class PassengerService {
 
         for(Passenger passenger : passengerList) {
             if(passenger.getId() == id){
-                passenger.setFirstname(passengerToChange.getFirstname());
+                passenger.setFirstName(passengerToChange.getFirstName());
                 passenger.setLastName(passengerToChange.getLastName());
                 passenger.setPhoneNumber(passengerToChange.getPhoneNumber());
                 passenger.setAircraftIdsList(passengerToChange.getAircraftIdsList());
