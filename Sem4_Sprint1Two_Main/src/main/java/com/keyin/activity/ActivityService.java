@@ -326,7 +326,7 @@ public class ActivityService {
         Map<String, Object> parameters = activity.getParameters();
 
         Aircraft newAircraft = new Aircraft();
-        newAircraft.setId((Integer) parameters.get("id"));
+        newAircraft.setId((Long) parameters.get("id"));
         newAircraft.setType((String) parameters.get("type"));
         newAircraft.setAirlineName((String) parameters.get("airlineName"));
         newAircraft.setNoOfPassengers((Integer) parameters.get("numberOfPassengers"));
@@ -340,7 +340,7 @@ public class ActivityService {
         Map<String, Object> parameters = redoActivity.getParameters();
 
         Aircraft newAircraft = new Aircraft();
-        newAircraft.setId((Integer) parameters.get("id"));
+        newAircraft.setId((Long) parameters.get("id"));
         newAircraft.setType((String) parameters.get("type"));
         newAircraft.setAirlineName((String) parameters.get("airlineName"));
         newAircraft.setNoOfPassengers((Integer) parameters.get("numberOfPassengers"));
@@ -354,7 +354,7 @@ public class ActivityService {
         Map<String, Object> parameters = activity.getParameters();
 
         Airport newAirport = new Airport();
-        newAirport.setId((Integer) parameters.get("id"));
+        newAirport.setId((Long) parameters.get("id"));
         newAirport.setName((String) parameters.get("name"));
         newAirport.setCityId((Integer) parameters.get("cityId"));
 
@@ -366,7 +366,7 @@ public class ActivityService {
         Map<String, Object> parameters = redoActivity.getParameters();
 
         Airport newAirport = new Airport();
-        newAirport.setId((Integer) parameters.get("id"));
+        newAirport.setId((Long) parameters.get("id"));
         newAirport.setName((String) parameters.get("name"));
         newAirport.setCityId((Integer) parameters.get("cityId"));
 
@@ -378,7 +378,7 @@ public class ActivityService {
         Map<String, Object> parameters = activity.getParameters();
 
         City newCity = new City();
-        newCity.setId((Integer) parameters.get("id"));
+        newCity.setId((Long) parameters.get("id"));
         newCity.setName((String) parameters.get("name"));
         newCity.setProvince((String) parameters.get("province"));
         newCity.setPopulation((Integer) parameters.get("population"));
@@ -391,7 +391,7 @@ public class ActivityService {
         Map<String, Object> parameters = redoActivity.getParameters();
 
         City newCity = new City();
-        newCity.setId((Integer) parameters.get("id"));
+        newCity.setId((Long) parameters.get("id"));
         newCity.setName((String) parameters.get("name"));
         newCity.setProvince((String) parameters.get("province"));
         newCity.setPopulation((Integer) parameters.get("population"));
@@ -404,7 +404,7 @@ public class ActivityService {
         Map<String, Object> parameters = activity.getParameters();
 
         Passenger newPassenger = new Passenger();
-        newPassenger.setId((Integer) parameters.get("id"));
+        newPassenger.setId((Long) parameters.get("id"));
         newPassenger.setFirstname((String) parameters.get("firstname"));
         newPassenger.setLastName((String) parameters.get("lastName"));
         newPassenger.setPhoneNumber((String) parameters.get("phoneNumber"));
@@ -419,7 +419,7 @@ public class ActivityService {
         Map<String, Object> parameters = redoActivity.getParameters();
 
         Passenger newPassenger = new Passenger();
-        newPassenger.setId((Integer) parameters.get("id"));
+        newPassenger.setId((Long) parameters.get("id"));
         newPassenger.setFirstname((String) parameters.get("firstname"));
         newPassenger.setLastName((String) parameters.get("lastName"));
         newPassenger.setPhoneNumber((String) parameters.get("phoneNumber"));
