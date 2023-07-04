@@ -1,7 +1,5 @@
 package com.keyin.airport;
 
-import com.keyin.activity.ActivityService;
-import com.keyin.browser.BrowserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,26 +13,26 @@ public class AirportController {
     @Autowired
     private AirportService airportService;
     @Autowired
-    private BrowserService browserService; //-------------------------------------
+    private BrowserService browserService;
     @Autowired
-    private ActivityService activityService; //-------------------------------------
+    private ActivityService activityService;
 
     @GetMapping("/airport")
     public List<Airport> getAllAirports() {
-        browserService.addToBrowser("getAllAirports()", "/airport", LocalDateTime.now());
+        addToBrowser("getAllAirports()", "/airport");
         return airportService.getAllAirports();
     }
 
     @GetMapping("/airport/{id}")
     public Airport getAirportById(@PathVariable int id) {
-        String url = "/airport/" + String.valueOf(id);
-        browserService.addToBrowser("getAirportById()", url, LocalDateTime.now());
+        String url = "/airport/" + id;
+        addToBrowser("getAirportById()", url);
         return airportService.getAirportById(id);
     }
 
     @GetMapping("/airport/search")
-    public List<Airport> searchAirport(@RequestParam String toSearch){
-        browserService.addToBrowser("searchAirport()", "airport/search", LocalDateTime.now());
+    public List<Airport> searchAirport(@RequestParam String toSearch) {
+        addToBrowser("searchAirport()", "airport/search");
         return airportService.searchAirport(toSearch);
     }
 
@@ -43,50 +41,58 @@ public class AirportController {
         activityService.addActivity("airport", "create", Map.of("id", airport.getId(), "code", airport.getCode(), "name",  airport.getName(),"cityId", airport.getCityId()));
         browserService.addToBrowser("addAirport()", "/airport/addAirport", LocalDateTime.now());
         airportService.addAirport(airport);
+        addActivity("create", airport);
     }
 
     @DeleteMapping("/airport/deleteAirport/{id}")
     public List<Airport> deleteAirportById(@PathVariable int id) {
-        Airport airportForActivity = new Airport();
-        List<Airport> airportlist = airportService.getAllAirports();
-        for (Airport airport : airportlist){
-            if (airport.getId() == id) {
-                airportForActivity = airport;
-            }
-        }
+        List<Airport> airportList = airportService.getAllAirports();
+        Airport airportForActivity = findAirportById(airportList, id);
+
         if (airportForActivity != null) {
             activityService.addActivity("airport", "delete", Map.of("id", airportForActivity.getId(), "code", airportForActivity.getCode(),"name",  airportForActivity.getName(), "cityId", airportForActivity.getCityId()));
         }
 
-        String url = "/airport/deleteAirport/" + String.valueOf(id);
-        browserService.addToBrowser("deleteAirport()", url, LocalDateTime.now());
+        String url = "/airport/deleteAirport/" + id;
+        addToBrowser("deleteAirport()", url);
         return airportService.deleteAirportById(id);
     }
 
     @PutMapping("/airport/updateAirport/{id}")
-    public List<Airport> updateAirport(@PathVariable int id, @RequestBody Airport airport){
-        Airport airportForActivity = new Airport();
+    public List<Airport> updateAirport(@PathVariable int id, @RequestBody Airport airport) {
         List<Airport> airportList = airportService.getAllAirports();
-        for (Airport airportToFind : airportList){
-            if (airportToFind.getId() == id) {
-                airportForActivity = airportToFind;
-            }
-        }
+        Airport airportForActivity = findAirportById(airportList, id);
+
         if (airportForActivity != null) {
             activityService.addActivity("airport", "update", Map.of("id", airportForActivity.getId(), "code", airportForActivity.getCode(),"name",  airportForActivity.getName(), "cityId", airportForActivity.getCityId()));
         }
 
-        String url = "/airport/updateAirport/" + String.valueOf(id);
-        browserService.addToBrowser("updateAirport()", url, LocalDateTime.now());
+        String url = "/airport/updateAirport/" + id;
+        addToBrowser("updateAirport()", url);
         return airportService.updateAirport(id, airport);
     }
 
-    //relationship
     @GetMapping("/airport/getByCityId/{id}")
     public List<Airport> airportByCityId(@PathVariable int id) {
-        String url = "/airport/getByCity/" + String.valueOf(id);
-        browserService.addToBrowser("getAirportByCityId()", url, LocalDateTime.now());
+        String url = "/airport/getByCity/" + id;
+        addToBrowser("getAirportByCityId()", url);
         return airportService.airportByCityId(id);
     }
 
+    private void addToBrowser(String method, String url) {
+        browserService.addToBrowser(method, url, LocalDateTime.now());
+    }
+
+    private void addActivity(String action, Airport airport) {
+        activityService.addActivity("airport", action, Map.of("id", airport.getId(), "name", airport.getName(), "cityId", airport.getCityId()));
+    }
+
+    private Airport findAirportById(List<Airport> airportList, int id) {
+        for (Airport airport : airportList) {
+            if (airport.getId() == id) {
+                return airport;
+            }
+        }
+        return null;
+    }
 }
