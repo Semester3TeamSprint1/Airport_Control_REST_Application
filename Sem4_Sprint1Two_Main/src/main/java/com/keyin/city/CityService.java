@@ -19,21 +19,18 @@ public class CityService {
         //city1.setId(1);
         city1.setName("St Johns");
         city1.setProvince("Newfoundland");
-        city1.setPopulation(100_000);
         cityList.add(city1);
 
         City city2 = new City();
         //city2.setId(2);
         city2.setName("Edmonton");
         city2.setProvince("Alberta");
-        city2.setPopulation(100_000_000);
         cityList.add(city2);
 
         City city3 = new City();
         //city3.setId(3);
         city3.setName("Calgary");
         city3.setProvince("Alberta");
-        city3.setPopulation(200_000_000);
         cityList.add(city3);
     }
 
@@ -99,7 +96,6 @@ public class CityService {
             if(city.getId() == id){
                 city.setName(cityToChange.getName());
                 city.setProvince(cityToChange.getProvince());
-                city.setPopulation(cityToChange.getPopulation());
                 found = true;
             }
         }

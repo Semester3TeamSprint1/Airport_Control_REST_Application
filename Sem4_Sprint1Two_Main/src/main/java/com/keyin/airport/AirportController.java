@@ -40,7 +40,7 @@ public class AirportController {
 
     @PostMapping("/airport/addAirport")
     public void addAirport(@RequestBody Airport airport){
-        activityService.addActivity("airport", "create", Map.of("id", airport.getId(), "name",  airport.getName(),"cityId", airport.getCityId()));
+        activityService.addActivity("airport", "create", Map.of("id", airport.getId(), "code", airport.getCode(), "name",  airport.getName(),"cityId", airport.getCityId()));
         browserService.addToBrowser("addAirport()", "/airport/addAirport", LocalDateTime.now());
         airportService.addAirport(airport);
     }
@@ -55,7 +55,7 @@ public class AirportController {
             }
         }
         if (airportForActivity != null) {
-            activityService.addActivity("airport", "delete", Map.of("id", airportForActivity.getId(), "name",  airportForActivity.getName(), "cityId", airportForActivity.getCityId()));
+            activityService.addActivity("airport", "delete", Map.of("id", airportForActivity.getId(), "code", airportForActivity.getCode(),"name",  airportForActivity.getName(), "cityId", airportForActivity.getCityId()));
         }
 
         String url = "/airport/deleteAirport/" + String.valueOf(id);
@@ -73,7 +73,7 @@ public class AirportController {
             }
         }
         if (airportForActivity != null) {
-            activityService.addActivity("airport", "update", Map.of("id", airportForActivity.getId(), "name",  airportForActivity.getName(), "cityId", airportForActivity.getCityId()));
+            activityService.addActivity("airport", "update", Map.of("id", airportForActivity.getId(), "code", airportForActivity.getCode(),"name",  airportForActivity.getName(), "cityId", airportForActivity.getCityId()));
         }
 
         String url = "/airport/updateAirport/" + String.valueOf(id);

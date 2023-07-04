@@ -15,7 +15,6 @@ public class AirportService {
 
     private List<City> cityList = new ArrayList<>();
 
-    // make a method to do the population instead of in the constructor
 
     public AirportService() {
        // populateList();
@@ -75,7 +74,7 @@ public class AirportService {
         for (Airport airport : airportList) {
             String idToString = String.valueOf(airport.getId());
 
-            if(idToString.equals(toSearch) || airport.getName().equals(toSearch)) {
+            if(idToString.equals(toSearch) || airport.getName().equals(toSearch) || airport.getCode().equals(toSearch)) {
                 foundList.add(airport);
 
             }
@@ -88,6 +87,7 @@ public class AirportService {
 
         for(Airport airport : airportList) {
             if(airport.getId() == id){
+                airport.setCode(airportToChange.getCode());
                 airport.setName(airportToChange.getName());
                 airport.setCityId(airportToChange.getCityId());
                 found = true;

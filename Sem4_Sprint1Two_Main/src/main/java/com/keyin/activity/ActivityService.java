@@ -381,7 +381,6 @@ public class ActivityService {
         newCity.setId((Long) parameters.get("id"));
         newCity.setName((String) parameters.get("name"));
         newCity.setProvince((String) parameters.get("province"));
-        newCity.setPopulation((Integer) parameters.get("population"));
 
         return newCity;
     }
@@ -394,7 +393,6 @@ public class ActivityService {
         newCity.setId((Long) parameters.get("id"));
         newCity.setName((String) parameters.get("name"));
         newCity.setProvince((String) parameters.get("province"));
-        newCity.setPopulation((Integer) parameters.get("population"));
 
         return newCity;
     }
@@ -405,7 +403,7 @@ public class ActivityService {
 
         Passenger newPassenger = new Passenger();
         newPassenger.setId((Long) parameters.get("id"));
-        newPassenger.setFirstname((String) parameters.get("firstname"));
+        newPassenger.setFirstName((String) parameters.get("firstName"));
         newPassenger.setLastName((String) parameters.get("lastName"));
         newPassenger.setPhoneNumber((String) parameters.get("phoneNumber"));
         newPassenger.setAircraftIdsList((List<Integer>) parameters.get("aircraftIdsList"));
@@ -420,7 +418,7 @@ public class ActivityService {
 
         Passenger newPassenger = new Passenger();
         newPassenger.setId((Long) parameters.get("id"));
-        newPassenger.setFirstname((String) parameters.get("firstname"));
+        newPassenger.setFirstName((String) parameters.get("firstName"));
         newPassenger.setLastName((String) parameters.get("lastName"));
         newPassenger.setPhoneNumber((String) parameters.get("phoneNumber"));
         newPassenger.setAircraftIdsList((List<Integer>) parameters.get("aircraftIdsList"));
@@ -487,7 +485,7 @@ public class ActivityService {
     public Passenger setPassengerFromActivityStack(){
         Passenger newPassenger = new Passenger();
         newPassenger.setId((Integer) activityStack.peek().getParameters().get("id"));
-        newPassenger.setFirstname((String) activityStack.peek().getParameters().get("firstname"));
+        newPassenger.setFirstname((String) activityStack.peek().getParameters().get("firstName"));
         newPassenger.setLastName((String) activityStack.peek().getParameters().get("lastName"));
         newPassenger.setPhoneNumber((String) activityStack.peek().getParameters().get("phoneNumber"));
         newPassenger.setAircraftIdsList((List<Integer>) activityStack.peek().getParameters().get("aircraftIdsList"));
@@ -498,7 +496,7 @@ public class ActivityService {
     public Passenger setPassengerFromRedoStack(){
         Passenger newPassenger = new Passenger();
         newPassenger.setId((Integer) redoActivityStack.peek().getParameters().get("id"));
-        newPassenger.setFirstname((String) redoActivityStack.peek().getParameters().get("firstname"));
+        newPassenger.setFirstname((String) redoActivityStack.peek().getParameters().get("firstName"));
         newPassenger.setLastName((String) redoActivityStack.peek().getParameters().get("lastName"));
         newPassenger.setPhoneNumber((String) redoActivityStack.peek().getParameters().get("phoneNumber"));
         newPassenger.setAircraftIdsList((List<Integer>) redoActivityStack.peek().getParameters().get("aircraftIdsList"));

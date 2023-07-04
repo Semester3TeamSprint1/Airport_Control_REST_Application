@@ -43,7 +43,7 @@ public class PassengerController {
 
     @PostMapping("/passenger/addPassenger")
     public void addPassenger(@RequestBody Passenger passenger){
-        activityService.addActivity("passenger", "create", Map.of("id", passenger.getId(), "firstname",  passenger.getFirstname(), "lastName", passenger.getLastName(), "phoneNumber", passenger.getPhoneNumber(), "aircraftIdsList", passenger.getAircraftIdsList(), "airportIdsList", passenger.getAirportIdsList()));
+        activityService.addActivity("passenger", "create", Map.of("id", passenger.getId(), "firstName",  passenger.getFirstName(), "lastName", passenger.getLastName(), "phoneNumber", passenger.getPhoneNumber(), "aircraftIdsList", passenger.getAircraftIdsList(), "airportIdsList", passenger.getAirportIdsList()));
         browserService.addToBrowser("addPassenger()", "/passenger/addPassenger", LocalDateTime.now());
         passengerService.addPassenger(passenger);
     }
@@ -58,7 +58,7 @@ public class PassengerController {
             }
         }
         if (passengerForActivity != null) {
-            activityService.addActivity("passenger", "delete", Map.of("id", passengerForActivity.getId(), "firstname",  passengerForActivity.getFirstname(), "lastName", passengerForActivity.getLastName(), "phoneNumber", passengerForActivity.getPhoneNumber(), "aircraftIdsList", passengerForActivity.getAircraftIdsList(), "airportIdsList", passengerForActivity.getAirportIdsList()));
+            activityService.addActivity("passenger", "delete", Map.of("id", passengerForActivity.getId(), "firstName",  passengerForActivity.getFirstName(), "lastName", passengerForActivity.getLastName(), "phoneNumber", passengerForActivity.getPhoneNumber(), "aircraftIdsList", passengerForActivity.getAircraftIdsList(), "airportIdsList", passengerForActivity.getAirportIdsList()));
         }
 
         String url = "/passenger/deletePassenger/" + String.valueOf(id);
@@ -76,7 +76,7 @@ public class PassengerController {
             }
         }
         if (passengerForActivity != null) {
-            activityService.addActivity("passenger", "update", Map.of("id", passengerForActivity.getId(), "firstname",  passengerForActivity.getFirstname(), "lastName", passengerForActivity.getLastName(), "phoneNumber", passengerForActivity.getPhoneNumber(), "aircraftIdsList", passengerForActivity.getAircraftIdsList(), "airportIdsList", passengerForActivity.getAirportIdsList()));
+            activityService.addActivity("passenger", "update", Map.of("id", passengerForActivity.getId(), "firstName",  passengerForActivity.getFirstName(), "lastName", passengerForActivity.getLastName(), "phoneNumber", passengerForActivity.getPhoneNumber(), "aircraftIdsList", passengerForActivity.getAircraftIdsList(), "airportIdsList", passengerForActivity.getAirportIdsList()));
         }
 
         String url = "/passenger/updatePassenger/" + String.valueOf(id);

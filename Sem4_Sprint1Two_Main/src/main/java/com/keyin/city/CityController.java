@@ -41,7 +41,7 @@ public class CityController {
 
     @PostMapping("/city/addCity")
     public void addCity(@RequestBody City city){
-        activityService.addActivity("city", "create", Map.of("id", city.getId(), "name",  city.getName(), "province", city.getProvince(), "population", city.getPopulation()));
+        activityService.addActivity("city", "create", Map.of("id", city.getId(), "name",  city.getName(), "province", city.getProvince()));
         browserService.addToBrowser("addCity()", "/city/addCity", LocalDateTime.now());
         cityService.addCity(city);
     }
@@ -56,7 +56,7 @@ public class CityController {
             }
         }
         if (cityForActivity != null) {
-            activityService.addActivity("city", "delete", Map.of("id", cityForActivity.getId(), "name",  cityForActivity.getName(), "province", cityForActivity.getProvince(), "population", cityForActivity.getPopulation()));
+            activityService.addActivity("city", "delete", Map.of("id", cityForActivity.getId(), "name",  cityForActivity.getName(), "province", cityForActivity.getProvince()));
         }
 
         String url = "/city/deleteCity/" + String.valueOf(id);
@@ -74,7 +74,7 @@ public class CityController {
             }
         }
         if (cityForActivity != null) {
-            activityService.addActivity("city", "update", Map.of("id", cityForActivity.getId(), "name",  cityForActivity.getName(), "province", cityForActivity.getProvince(), "population", cityForActivity.getPopulation()));
+            activityService.addActivity("city", "update", Map.of("id", cityForActivity.getId(), "name",  cityForActivity.getName(), "province", cityForActivity.getProvince()));
 
         }
 
