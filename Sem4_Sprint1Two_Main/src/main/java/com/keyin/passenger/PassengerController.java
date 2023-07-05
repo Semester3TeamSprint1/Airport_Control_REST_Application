@@ -82,14 +82,14 @@ public class PassengerController {
         return passengerService.updatePassenger(id, passenger);
     }
 
-    @GetMapping("/passenger/{id}/getAircraft")
+    @GetMapping("/passenger/{id}/getAircraft") // TODO: Can't seem to get this function working.
     public List<Aircraft> getAircraftPassengerTravelledOn(@PathVariable int id) {
         String url = "/passenger/"  + String.valueOf(id) + "/getAircraft";
         browserService.addToBrowser("getAircraft()", url, LocalDateTime.now());
         return passengerService.getAircraft(id);
     }
 
-    @GetMapping("/passenger/{id}/getAirport")
+    @GetMapping("/passenger/{id}/getAirport") // TODO: Can't get this function working either.
     public List<Airport> getAirportPassengerVisited(@PathVariable int id) {
         String url = "/passenger/"  + String.valueOf(id) + "/getAirport";
         browserService.addToBrowser("getAirport()", url, LocalDateTime.now());

@@ -81,13 +81,13 @@ public class AircraftController {
         return aircraftService.updateAircraft(id, aircraft);
     }
 
-    @PostMapping("/aircraft/addAllowedAirport")
+    @PostMapping("/aircraft/addAllowedAirport") // TODO: Can't get this function to work correctly.
     public Aircraft addAirport(@RequestParam String aircraftToSearch, String airportToSearch){
         browserService.addToBrowser("addToAllowedList()", "/aircraft/addAllowedAirport", LocalDateTime.now());
         return aircraftService.addToAllowedList(aircraftToSearch, airportToSearch);
     }
 
-    @PostMapping("/aircraft/removeAllowedAirport")
+    @PostMapping("/aircraft/removeAllowedAirport") // TODO: Can't get this function to work correctly.
     public Aircraft removeAirport(@RequestParam String aircraftToSearch, String airportToSearch){
         browserService.addToBrowser("removeFromAllowedList()", "/aircraft/addAirport", LocalDateTime.now());
         return aircraftService.removeFromAllowedList(aircraftToSearch, airportToSearch);
