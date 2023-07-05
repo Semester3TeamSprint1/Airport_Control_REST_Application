@@ -51,28 +51,16 @@ public class Passenger {
         return airportIdsList;
     }
 
-    public void setAircraftIdsList(List<Integer> aircraftIdsList) {
-        this.aircraftIdsList = aircraftIdsList;
-    }
-
-    public void setAirportIdsList(List<Integer> airportIdsList) {
-        this.airportIdsList = airportIdsList;
-    }
-
-    public void addToAircraftIdsList(int id){
+    public void addToAircraftIdsList(int id) {
         aircraftIdsList.add(id);
     }
 
-    public void removeFromAircraftIdsList(int id){
-        for (Integer match : aircraftIdsList) {
-            if(match == id){
-                aircraftIdsList.remove(match);
-                System.out.println("The aircraft has been removed from the list");
-            }
-        }
+    public void removeFromAircraftIdsList(int id) {
+        aircraftIdsList.removeIf(match -> match == id);
+        System.out.println("removed from list");
     }
 
-    public void addToAirportIdsList(int id){
+    public void addToAirportIdsList(int id) {
         airportIdsList.add(id);
     }
 
@@ -84,5 +72,4 @@ public class Passenger {
             }
         }
     }
-
 }

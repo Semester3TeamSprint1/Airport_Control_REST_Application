@@ -46,23 +46,20 @@ public class Aircraft {
         this.noOfPassengers = noOfPassengers;
     }
 
-    public void setAllowedAirportList(List<Airport> allowedAirportList) {
-        this.allowedAirportList = allowedAirportList;
-    }
     public List<Airport> getAllowedAirportList() {
         return allowedAirportList;
+    }
+
+    public void setAllowedAirportList(List<Airport> allowedAirportList) {
+        this.allowedAirportList = allowedAirportList;
     }
 
     public void addAllowedAirport(Airport airport) {
         allowedAirportList.add(airport);
     }
-    public void removeAllowedAirport(Airport airport) {
-        for (Airport match : allowedAirportList) {
-            if(Objects.equals(airport.getName(), match.getName())){
-                allowedAirportList.remove(match);
-                System.out.println("The airport has been removed from the list");
-            }
-        }
-    }
 
+    public void removeAllowedAirport(Airport airport) {
+        allowedAirportList.removeIf(match -> Objects.equals(airport.getName(), match.getName()));
+        System.out.println("removed");
+    }
 }

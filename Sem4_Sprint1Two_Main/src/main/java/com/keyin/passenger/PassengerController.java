@@ -21,22 +21,19 @@ public class PassengerController {
     private ActivityService activityService;
 
     @GetMapping("/passenger")
-    public List<Passenger> getAllPassenger() {
-        browserService.addToBrowser("getAllPassenger()", "/passenger", LocalDateTime.now());
-        return passengerService.getAllPassenger();
+    public List<Passenger> getAllPassengers() {
+        return performOperation("getAllPassengers()", "/passenger", () -> passengerService.getAllPassengers());
     }
 
     @GetMapping("/passenger/{id}")
     public Passenger getPassengerById(@PathVariable int id) {
-        String url = "/passenger/" + String.valueOf(id);
-        browserService.addToBrowser("getPassengerById()", url, LocalDateTime.now());
-        return passengerService.getPassengerById(id);
+        String url = "/passenger/" + id;
+        return performOperation("getPassengerById()", url, () -> passengerService.getPassengerById(id));
     }
 
     @GetMapping("/passenger/search")
-    public List<Passenger> searchPassenger(@RequestParam String toSearch){
-        browserService.addToBrowser("searchPassenger()", "passenger/search", LocalDateTime.now());
-        return passengerService.searchPassenger(toSearch);
+    public List<Passenger> searchPassenger(@RequestParam String toSearch) {
+        return performOperation("searchPassenger()", "passenger/search", () -> passengerService.searchPassenger(toSearch));
     }
 
     @PostMapping("/passenger/addPassenger")
@@ -84,17 +81,27 @@ public class PassengerController {
 
     @GetMapping("/passenger/{id}/getAircraft") // TODO: Can't seem to get this function working.
     public List<Aircraft> getAircraftPassengerTravelledOn(@PathVariable int id) {
-        String url = "/passenger/"  + String.valueOf(id) + "/getAircraft";
-        browserService.addToBrowser("getAircraft()", url, LocalDateTime.now());
-        return passengerService.getAircraft(id);
+        String url = "/passenger/" + id + "/getAircraft";
+        return performOperation("getAircraft()", url, () -> passengerService.getAircraft(id));
     }
 
     @GetMapping("/passenger/{id}/getAirport") // TODO: Can't get this function working either.
     public List<Airport> getAirportPassengerVisited(@PathVariable int id) {
-        String url = "/passenger/"  + String.valueOf(id) + "/getAirport";
-        browserService.addToBrowser("getAirport()", url, LocalDateTime.now());
-        return passengerService.getAirports(id);
+        String url = "/passenger/" + id + "/getAirport";
+        return performOperation("getAirport()", url, () -> passengerService.getAirports(id));
     }
 
+    private <T> T performOperation(String operationName, String url, Operation<T> operation) {
+        browserService.addToBrowser(operationName, url, LocalDateTime.now());
+        return operation.perform();
+    }
 
+    private <T, P> T performOperationWithActivity(String operationName, String url, P parameter, Operation<T> operation) {
+        activityService.addActivity("passenger", operationName, Map.of("id", parameter));
+        return performOperation(operationName, url, operation);
+    }
+
+    private interface Operation<T> {
+        T perform();
+    }
 }
