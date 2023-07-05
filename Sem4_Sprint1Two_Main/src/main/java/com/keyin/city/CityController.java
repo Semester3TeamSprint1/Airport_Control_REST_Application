@@ -26,13 +26,13 @@ public class CityController {
 
     @GetMapping("/city/{id}")
     public City getCityById(@PathVariable int id) {
-        String url = "/city/" + String.valueOf(id);
+        String url = "/city/" + id;
         browserService.addToBrowser("getCityById()", url, LocalDateTime.now());
         return cityService.getCityById(id);
     }
 
     @GetMapping("/city/search")
-    public List<City> searchAirport(@RequestParam String toSearch){
+    public List<City> searchCity(@RequestParam String toSearch) {
         browserService.addToBrowser("searchCity()", "city/search", LocalDateTime.now());
         return cityService.searchCity(toSearch);
     }
@@ -46,37 +46,25 @@ public class CityController {
 
     @DeleteMapping("/city/deleteCity/{id}")
     public List<City> deleteCityById(@PathVariable int id) {
-        City cityForActivity = new City();
-        List<City> citylist = cityService.getAllCities();
-        for (City city : citylist){
-            if (city.getId() == id) {
-                cityForActivity = city;
-            }
-        }
+        City cityForActivity = cityService.getCityById(id);
         if (cityForActivity != null) {
             activityService.addActivity("city", "delete", Map.of("id", cityForActivity.getId(), "name",  cityForActivity.getName(), "province", cityForActivity.getProvince()));
         }
 
-        String url = "/city/deleteCity/" + String.valueOf(id);
+        String url = "/city/deleteCity/" + id;
         browserService.addToBrowser("deleteCity()", url, LocalDateTime.now());
         return cityService.deleteCityById(id);
     }
 
     @PutMapping("/city/updateCity/{id}")
-    public List<City> updateCity(@PathVariable int id, @RequestBody City city){
-        City cityForActivity = new City();
-        List<City> citylist = cityService.getAllCities();
-        for (City cityToFind : citylist){
-            if (cityToFind.getId() == id) {
-                cityForActivity = cityToFind;
-            }
-        }
+    public List<City> updateCity(@PathVariable int id, @RequestBody City city) {
+        City cityForActivity = cityService.getCityById(id);
         if (cityForActivity != null) {
             activityService.addActivity("city", "update", Map.of("id", cityForActivity.getId(), "name",  cityForActivity.getName(), "province", cityForActivity.getProvince()));
 
         }
 
-        String url = "/city/updateCity/" + String.valueOf(id);
+        String url = "/city/updateCity/" + id;
         browserService.addToBrowser("updateCity()", url, LocalDateTime.now());
         return cityService.updateCity(id, city);
     }
