@@ -3,7 +3,6 @@ package com.keyin.airport;
 import com.keyin.city.City;
 import com.keyin.city.CityService;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,10 +16,7 @@ public class AirportService {
        // populateList();
     }
 
-    private void populateList() {
-        airportList.add(createAirport(1, "NL Airport", 1));
-        airportList.add(createAirport(2, "Edmonton Airlines", 2));
-        airportList.add(createAirport(3, "Calgary Airport", 3));
+    public void populateList(){
     }
 
     private Airport createAirport(int id, String name, int cityId) {
@@ -29,8 +25,8 @@ public class AirportService {
         airport.setName(name);
         airport.setCityId(cityId);
         return airport;
-    }
 
+    }
 
     public List<Airport> getAllAirports() {
         return airportList;
@@ -55,7 +51,7 @@ public class AirportService {
         for (Airport airport : airportList) {
             String idToString = String.valueOf(airport.getId());
 
-            if(idToString.equals(toSearch) || airport.getName().equals(toSearch) || airport.getCode().equals(toSearch)) {
+            if(idToString.equals(toSearch) || airport.getName().equalsIgnoreCase(toSearch) || airport.getCode().equalsIgnoreCase(toSearch)) {
                 foundList.add(airport);
             }
         }

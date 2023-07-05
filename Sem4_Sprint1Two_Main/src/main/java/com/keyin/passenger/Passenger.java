@@ -1,22 +1,21 @@
-
 package com.keyin.passenger;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Passenger {
-    private Long id;
+    private int id;
     private String firstName;
     private String lastName;
     private String phoneNumber;
     private List<Integer> aircraftIdsList = new ArrayList<>();
     private List<Integer> airportIdsList = new ArrayList<>();
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -65,8 +64,12 @@ public class Passenger {
         airportIdsList.add(id);
     }
 
-    public void removeFromAirportIdsList(int id) {
-        airportIdsList.removeIf(match -> match == id);
-        System.out.println("removed from list");
+    public void removeFromAirportIdsList(int id){
+        for (Integer match : airportIdsList) {
+            if(match == id){
+                airportIdsList.remove(match);
+                System.out.println("The airport has been removed from the list");
+            }
+        }
     }
 }

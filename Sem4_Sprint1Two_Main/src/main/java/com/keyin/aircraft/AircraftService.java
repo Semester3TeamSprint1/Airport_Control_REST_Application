@@ -21,24 +21,8 @@ public class AircraftService {
 
     }
 
-    private void populateList() {
-        List<Airport> allAirports = airportService.getAllAirports();
-
-        Aircraft aircraft1 = new Aircraft(1, "Airbus A220", "euroAir", 100);
-        aircraft1.addAllowedAirport(allAirports.get(0));
-        aircraft1.addAllowedAirport(allAirports.get(1));
-        aircraftList.add(aircraft1);
-
-        Aircraft aircraft2 = new Aircraft(2, "Comac C919", "West Jet", 70);
-        aircraftList.add(aircraft2);
-
-        Aircraft aircraft3 = new Aircraft(3, "Boeing 737", "Air Canada", 70);
-        aircraftList.add(aircraft3);
-
-        Aircraft aircraft4 = new Aircraft(4, "Fokker 70", "KLM Royal Dutch", 25);
-        aircraftList.add(aircraft4);
-
-        Aircraft aircraft5 = new Aircraft(5, "Embraer E-Jet E2 family", "Brazil air", 90);
+    public void populateList() {
+    }
 
     public List<Aircraft> getAllAircrafts() {
         return aircraftList;
@@ -54,7 +38,8 @@ public class AircraftService {
         for (Aircraft aircraft : aircraftList) {
             String idToString = String.valueOf(aircraft.getId());
 
-            if (idToString.equals(toSearch) || aircraft.getType().equals(toSearch) || aircraft.getAirlineName().equals(toSearch)) {
+            if(idToString.equals(toSearch) || aircraft.getType().equalsIgnoreCase(toSearch) || aircraft.getAirlineName().equalsIgnoreCase(toSearch)) {
+
                 foundList.add(aircraft);
             }
         }
@@ -97,12 +82,10 @@ public class AircraftService {
         return aircraftList;
     }
 
-    public Aircraft addToAllowedList(String aircraftToAdd, String airportToAdd) {
-        List<Airport> allAirports = airportService.getAllAirports();
-
-        Optional<Airport> optionalAirport = allAirports.stream()
-                .filter(airport -> airport.getId().equals(airportToAdd) || airport.getName().equals(airportToAdd))
-                .findFirst();
+    public Aircraft addToAllowedList(String aircraftToAdd, String airportToAdd){
+        List<Airport> allAirports = new ArrayList<>();
+        AirportService airportService = new AirportService();
+        allAirports = airportService.getAllAirports();
 
         if (optionalAirport.isPresent()) {
             Airport foundAirport = optionalAirport.get();
