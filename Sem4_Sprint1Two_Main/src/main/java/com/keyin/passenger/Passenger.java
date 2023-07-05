@@ -1,24 +1,21 @@
 package com.keyin.passenger;
 
-import com.keyin.airport.Airport;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class Passenger {
-    private Long id;
+    private int id;
     private String firstName;
     private String lastName;
     private String phoneNumber;
     private List<Integer> aircraftIdsList = new ArrayList<>();
     private List<Integer> airportIdsList = new ArrayList<>();
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -79,7 +76,6 @@ public class Passenger {
         airportIdsList.add(id);
     }
 
-    // used in service yet
     public void removeFromAirportIdsList(int id){
         for (Integer match : airportIdsList) {
             if(match == id){

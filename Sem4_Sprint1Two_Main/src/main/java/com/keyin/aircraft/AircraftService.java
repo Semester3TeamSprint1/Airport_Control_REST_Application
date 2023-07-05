@@ -17,46 +17,6 @@ public class AircraftService {
     }
 
     public void populateList() {
-        List<Airport> allAirports = new ArrayList<>();
-        AirportService airportService = new AirportService();
-        allAirports = airportService.getAllAirports();
-
-        Aircraft aircraft1 = new Aircraft();
-        //aircraft1.setId(1);
-        aircraft1.setType("Boeing 737");
-        aircraft1.setAirlineName("Air Canada");
-        aircraft1.setNoOfPassengers(100);
-        aircraft1.addAllowedAirport(allAirports.get(0));
-        aircraft1.addAllowedAirport(allAirports.get(1));
-        aircraftList.add(aircraft1);
-
-        Aircraft aircraft2 = new Aircraft();
-        //aircraft2.setId(2);
-        aircraft2.setType("Boeing 101");
-        aircraft2.setAirlineName("West Jet");
-        aircraft2.setNoOfPassengers(70);
-        aircraftList.add(aircraft2);
-
-        Aircraft aircraft3 = new Aircraft();
-        //aircraft3.setId(3);
-        aircraft3.setType("Boeing 408");
-        aircraft3.setAirlineName("Air Canada");
-        aircraft3.setNoOfPassengers(70);
-        aircraftList.add(aircraft3);
-
-        Aircraft aircraft4 = new Aircraft();
-        //aircraft4.setId(4);
-        aircraft4.setType("Boeing 709");
-        aircraft4.setAirlineName("West Jet");
-        aircraft4.setNoOfPassengers(25);
-        aircraftList.add(aircraft4);
-
-        Aircraft aircraft5 = new Aircraft();
-        //aircraft5.setId(5);
-        aircraft5.setType("Boeing 402");
-        aircraft5.setAirlineName("East Jet");
-        aircraft5.setNoOfPassengers(90);
-        aircraftList.add(aircraft5);
     }
 
     public List<Aircraft> getAllAircrafts() {
@@ -83,7 +43,7 @@ public class AircraftService {
         for (Aircraft aircraft : aircraftList) {
             String idToString = String.valueOf(aircraft.getId());
 
-            if(idToString.equals(toSearch) || aircraft.getType().equals(toSearch) || aircraft.getAirlineName().equals(toSearch)) {
+            if(idToString.equals(toSearch) || aircraft.getType().equalsIgnoreCase(toSearch) || aircraft.getAirlineName().equalsIgnoreCase(toSearch)) {
                 foundList.add(aircraft);
 
             }
@@ -114,7 +74,6 @@ public class AircraftService {
         return aircraftList;
     }
 
-    // doesn't like it when you delete the last item in the list that makes it empty
     public List<Aircraft> deleteAircraftById(int id) {
 
         boolean found = false;
@@ -133,11 +92,6 @@ public class AircraftService {
         return aircraftList;
     }
 
-
-    //------------------------------------------------------------------------------------------------------------------
-
-    // fix the problem for searching aircraft that doesn't exist
-    // fix so you cant add duplicates
     public Aircraft addToAllowedList(String aircraftToAdd, String airportToAdd){
         List<Airport> allAirports = new ArrayList<>();
         AirportService airportService = new AirportService();
@@ -172,7 +126,6 @@ public class AircraftService {
         return foundAircraft;
     }
 
-    // doesn't like when i delete from end of list
     public Aircraft removeFromAllowedList(String aircraftSelected, String airportToRemove) {
         List<Airport> allAirports = new ArrayList<>();
         AirportService airportService = new AirportService();

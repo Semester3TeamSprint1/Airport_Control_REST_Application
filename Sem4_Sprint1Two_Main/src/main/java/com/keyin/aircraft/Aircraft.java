@@ -7,18 +7,18 @@ import java.util.List;
 import java.util.Objects;
 
 public class Aircraft {
-    private Long id;
+    private int id;
     private String type;
     private String airlineName;
     private int noOfPassengers;
     private List<Airport> allowedAirportList = new ArrayList<>();
 
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

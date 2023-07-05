@@ -1,7 +1,6 @@
 package com.keyin.aircraft;
 
 import com.keyin.activity.ActivityService;
-import com.keyin.airport.Airport;
 import com.keyin.browser.BrowserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

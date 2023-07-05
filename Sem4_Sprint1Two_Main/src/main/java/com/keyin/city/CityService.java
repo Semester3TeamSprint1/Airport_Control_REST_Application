@@ -1,8 +1,6 @@
 package com.keyin.city;
 
-import com.keyin.airport.Airport;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,23 +13,6 @@ public class CityService {
     }
 
     public void populateList() {
-        City city1 = new City();
-        //city1.setId(1);
-        city1.setName("St Johns");
-        city1.setProvince("Newfoundland");
-        cityList.add(city1);
-
-        City city2 = new City();
-        //city2.setId(2);
-        city2.setName("Edmonton");
-        city2.setProvince("Alberta");
-        cityList.add(city2);
-
-        City city3 = new City();
-        //city3.setId(3);
-        city3.setName("Calgary");
-        city3.setProvince("Alberta");
-        cityList.add(city3);
     }
 
     public List<City> getAllCities() {
@@ -58,7 +39,7 @@ public class CityService {
         for (City city : cityList) {
             String idToString = String.valueOf(city.getId());
 
-            if(idToString.equals(toSearch) || city.getName().equals(toSearch) || city.getProvince().equals(toSearch)) {
+            if(idToString.equals(toSearch) || city.getName().equalsIgnoreCase(toSearch) || city.getProvince().equalsIgnoreCase(toSearch)) {
                 foundList.add(city);
 
             }

@@ -1,11 +1,8 @@
 package com.keyin.airport;
 
-
-import com.keyin.aircraft.AircraftService;
 import com.keyin.city.City;
 import com.keyin.city.CityService;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,25 +18,7 @@ public class AirportService {
     }
 
     public void populateList(){
-        Airport airport1 = new Airport();
-        //airport1.setId(1);
-        airport1.setName("NL Airport");
-        airport1.setCityId(1);
-        airportList.add(airport1);
-
-        Airport airport2 = new Airport();
-        //airport2.setId(2);
-        airport2.setName("Edmonton Airlines");
-        airport2.setCityId(2);
-        airportList.add(airport2);
-
-        Airport airport3 = new Airport();
-        //airport3.setId(3);
-        airport3.setName("Calgary Airport");
-        airport3.setCityId(3);
-        airportList.add(airport3);
     }
-
 
     public List<Airport> getAllAirports() {
         return airportList;
@@ -74,7 +53,7 @@ public class AirportService {
         for (Airport airport : airportList) {
             String idToString = String.valueOf(airport.getId());
 
-            if(idToString.equals(toSearch) || airport.getName().equals(toSearch) || airport.getCode().equals(toSearch)) {
+            if(idToString.equals(toSearch) || airport.getName().equalsIgnoreCase(toSearch) || airport.getCode().equalsIgnoreCase(toSearch)) {
                 foundList.add(airport);
 
             }
@@ -99,7 +78,6 @@ public class AirportService {
         return airportList;
     }
 
-    // doesn't like it when you delete the last item in the list that makes it empty
     public List<Airport> deleteAirportById(int id) {
 
         boolean found = false;
